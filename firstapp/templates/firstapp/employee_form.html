@@ -1,0 +1,27 @@
+{% extends 'firstapp/base.html' %} {% block content %}
+<form action="" method="post">
+  {% csrf_token %}
+  <div
+    class="card-body"
+    style="width: 36rem; display: flex; flex-direction: column"
+  >
+    {{form}}
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <button
+        type="submit"
+        class="btn btn-success btn-block btn-lg"
+        style="width: 10rem; height: 3rem"
+      >
+        SAVE
+      </button>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'emp_list' %}" class="btn btn-secondary btn-block btn-lg"
+        >View Employees</a
+      >
+    </div>
+  </div>
+</form>
+{% endblock content %}

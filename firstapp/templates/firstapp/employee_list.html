@@ -1,0 +1,33 @@
+{% extends 'firstapp/base.html' %} {% block content %}
+
+<table class="table table-borderless">
+  <thead class="border-bottom ">
+    <tr>
+      <td>Full Name</td>
+      <td>Mobile</td>
+      <td>Position</td>
+      <td>
+        <a href="{% url 'emp_form'%}" class="btn btn-success">Add New</a>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for employee in employees %}
+    <tr>
+      <td>{{employee.fullname}}</td>
+      <td>{{employee.mobile}}</td>
+      <td>{{employee.position}}</td>
+      <td>
+        <a href="{% url 'emp_update' employee.id %}" class="btn btn-secondary">Edit</a>
+      <form action="{% url 'emp_delete' employee.id %}" method="post" class="d-inline">
+        {% csrf_token%}
+        <button type="submit" class="btn btn-danger float-right btn-lg">Delete</button>
+      </form>
+    </td>
+    </tr>
+
+    {% endfor%}
+  </tbody>
+</table>
+
+{% endblock content %}
